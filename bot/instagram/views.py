@@ -2,7 +2,7 @@ import os
 import random
 import datetime
 import arabic_reshaper
-from bidi.algorithm import get_display
+from bidi.algorithm import X6_IGNORED, get_display
 from django.http import HttpResponse
 from instapy import InstaPy, smart_run
 from PIL import Image, ImageDraw, ImageFont
@@ -577,9 +577,6 @@ def CallIntractionFollowing(request):
     for i in all_users:
         p= i.name
         objects.append(p)
-    print('+'*80)
-    print(objects)
-    print('*'*80)
     for ac in accs:
         u = ac.username
         p = ac.password
@@ -824,7 +821,8 @@ def CallStoryUsers(request):
 
 
 def sendstory(request,id):
-    path = "/home/mehdi/Documents/bot/bot/story"
+    x = os.getcwd()
+    path = f"{x}/story"
     dirs = os.listdir( path )
     accs= models.accounts.objects.all()
 
@@ -837,14 +835,15 @@ def sendstory(request,id):
                 p = ac.password
                 print(u)
                 print(p)
-                os.system(f'java -jar /home/mehdi/IdeaProjects/MadtalkRobot/out/artifacts/MadtalkRobot_jar/MadtalkRobot.jar {u} {p} {jpg_to_post}')
+                os.system(f'java -jar instagram/MadtalkRobot.jar {u} {p} {jpg_to_post}')
 
     response = """done....."""
 
     return HttpResponse(response)
 
 def sendpost(request, caption ,id):
-    path = "/home/mehdi/Documents/bot/bot/post"
+    x = os.getcwd()
+    path = f"{x}/story"
     dirs = os.listdir( path )
 
     for file in dirs:
@@ -854,7 +853,7 @@ def sendpost(request, caption ,id):
             for ac in accs:
                 u = ac.username
                 p = ac.password
-                os.system(f'java -jar /home/mehdi/IdeaProjects/MadtalkRobot/out/artifacts/MadtalkRobot_jar/MadtalkRobot.jar {u} {p} {jpg_to_post} "{caption}"')
+                os.system(f'java -jar instagram/MadtalkRobot.jar {u} {p} {jpg_to_post} "{caption}"')
     response = """done....."""
 
     return HttpResponse(response)
