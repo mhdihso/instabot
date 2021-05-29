@@ -626,7 +626,7 @@ def CallIntractionFollowers(request):
         p = ac.password
         session = InstaPy (username= u, password = p)
         try:
-            with  smart_run(session):
+            with smart_run(session):
                 session.set_user_interact(amount=amount, randomize=randomaize, percentage=50)
                 session.set_do_follow(enabled=True, percentage=70)
                 session.set_do_like(enabled=True, percentage=70)
@@ -829,13 +829,16 @@ def sendstory(request,id):
     for file in dirs:
         jpg_to_post = path + '/' + file
         
+    
         if file == f'{id}.jpg':
             for ac in accs:
                 u = ac.username
                 p = ac.password
                 print(u)
                 print(p)
+                print(jpg_to_post)
                 os.system(f'java -jar instagram/MadtalkRobot.jar {u} {p} {jpg_to_post}')
+
 
     response = """done....."""
 

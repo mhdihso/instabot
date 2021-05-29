@@ -8,5 +8,6 @@ from rest_framework.authtoken.views import obtain_auth_token
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('token/',views.obtain_auth_token),
-    path('instagram/',include('instagram.urls'))
+    path('instagram/',include('instagram.urls')),
+    path('twitter/', include('twitter.urls'))
 ]+ static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
