@@ -9,6 +9,7 @@ from PIL import Image, ImageDraw, ImageFont
 from rest_framework import permissions, viewsets
 
 from . import models, serialaizers
+import geckodriver_autoinstaller
 
 # class Accountzz(viewsets.ModelViewSet):
 #     queryset = models.accounts.objects.allView()
