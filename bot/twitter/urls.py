@@ -18,4 +18,10 @@ urlpatterns = [
     path('search-intraction-others/<int:id>/<int:count>', views.searchintractionothers , name='search-intraction-others'),
     path('search-send-direct-manager/<int:id>/<int:count>', views.searchsenddirectmanager , name='search-intraction-manager'),
     path('search-send-direct-others/<int:id>/<int:count>', views.searchsenddirectothers , name='search-intraction-others'),
+    path('retweet-specific-tweet-manager/<int:tweet_id>',views.retweetmanager, name='retweetmanager'),
+    path('retweet-specific-tweet-others/<int:tweet_id>',views.retweetothers, name='retweetothers'),
+    path('like-specific-tweet-manager/<int:tweet_id>',views.likemanager, name='likemanager'),
+    path('like-specific-tweet-others/<int:tweet_id>',views.likeothers, name='likeothers'),
+    path('reply-specific-tweet-manager/<int:tweet_id>/<str:reply_text>',views.replymanager, name='replymanager'),
+    path('reply-specific-tweet-others/<int:tweet_id>/<str:reply_text>',views.replyothers, name='replyothers'),
 ]

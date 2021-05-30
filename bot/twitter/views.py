@@ -685,3 +685,187 @@ def searchsenddirectothers(request , id , count):
 
     response = """done....."""
     return HttpResponse(response)
+
+def retweetmanager(request , tweet_id):
+    accs = models.Account.objects.filter(is_managerdb = True)
+
+    for ac in accs:
+        api_key = ac.api_key
+        api_secret_key = ac.api_secret_key
+        access_token = ac.access_token
+        access_token_secret = ac.access_token_secret
+
+        auth = tweepy.OAuthHandler(api_key, 
+        api_secret_key)
+
+        auth.set_access_token(access_token, 
+            access_token_secret)
+
+
+        api = tweepy.API(auth)
+
+        try:
+            api.verify_credentials()
+            print("Authentication OK")
+        except:
+            print("Error during authentication")
+
+        api.retweet(tweet_id)
+
+            
+
+    response = """done....."""
+    return HttpResponse(response)
+
+def retweetothers(request , tweet_id):
+    accs = models.Account.objects.filter(is_managerdb = False)
+
+    for ac in accs:
+        api_key = ac.api_key
+        api_secret_key = ac.api_secret_key
+        access_token = ac.access_token
+        access_token_secret = ac.access_token_secret
+
+        auth = tweepy.OAuthHandler(api_key, 
+        api_secret_key)
+
+        auth.set_access_token(access_token, 
+            access_token_secret)
+
+
+        api = tweepy.API(auth)
+
+        try:
+            api.verify_credentials()
+            print("Authentication OK")
+        except:
+            print("Error during authentication")
+
+        api.retweet(tweet_id)
+
+def likemanager(request , tweet_id):
+    accs = models.Account.objects.filter(is_managerdb = True)
+
+    for ac in accs:
+        api_key = ac.api_key
+        api_secret_key = ac.api_secret_key
+        access_token = ac.access_token
+        access_token_secret = ac.access_token_secret
+
+        auth = tweepy.OAuthHandler(api_key, 
+        api_secret_key)
+
+        auth.set_access_token(access_token, 
+            access_token_secret)
+
+
+        api = tweepy.API(auth)
+
+        try:
+            api.verify_credentials()
+            print("Authentication OK")
+        except:
+            print("Error during authentication")
+
+        api.create_favorite(tweet_id)
+
+            
+
+    response = """done....."""
+    return HttpResponse(response)
+
+def likeothers(request , tweet_id):
+    accs = models.Account.objects.filter(is_managerdb = False)
+
+    for ac in accs:
+        api_key = ac.api_key
+        api_secret_key = ac.api_secret_key
+        access_token = ac.access_token
+        access_token_secret = ac.access_token_secret
+
+        auth = tweepy.OAuthHandler(api_key, 
+        api_secret_key)
+
+        auth.set_access_token(access_token, 
+            access_token_secret)
+
+
+        api = tweepy.API(auth)
+
+        try:
+            api.verify_credentials()
+            print("Authentication OK")
+        except:
+            print("Error during authentication")
+
+        api.create_favorite(tweet_id)
+
+            
+
+    response = """done....."""
+    return HttpResponse(response)
+
+
+
+
+def replymanager(request , tweet_id , reply_text):
+    accs = models.Account.objects.filter(is_managerdb = True)
+
+    for ac in accs:
+        api_key = ac.api_key
+        api_secret_key = ac.api_secret_key
+        access_token = ac.access_token
+        access_token_secret = ac.access_token_secret
+
+        auth = tweepy.OAuthHandler(api_key, 
+        api_secret_key)
+
+        auth.set_access_token(access_token, 
+            access_token_secret)
+
+
+        api = tweepy.API(auth)
+
+        try:
+            api.verify_credentials()
+            print("Authentication OK")
+        except:
+            print("Error during authentication")
+
+        api.update_status(status = reply_text, in_reply_to_status_id = tweet_id , auto_populate_reply_metadata=True)
+
+            
+
+    response = """done....."""
+    return HttpResponse(response)
+
+def replyothers(request , tweet_id, reply_text):
+    accs = models.Account.objects.filter(is_managerdb = False)
+
+    for ac in accs:
+        api_key = ac.api_key
+        api_secret_key = ac.api_secret_key
+        access_token = ac.access_token
+        access_token_secret = ac.access_token_secret
+
+        auth = tweepy.OAuthHandler(api_key, 
+        api_secret_key)
+
+        auth.set_access_token(access_token, 
+            access_token_secret)
+
+
+        api = tweepy.API(auth)
+
+        try:
+            api.verify_credentials()
+            print("Authentication OK")
+        except:
+            print("Error during authentication")
+
+        api.update_status(status = reply_text, in_reply_to_status_id = tweet_id , auto_populate_reply_metadata=True)
+
+            
+
+    response = """done....."""
+    return HttpResponse(response)
